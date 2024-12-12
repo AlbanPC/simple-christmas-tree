@@ -27,7 +27,7 @@ jobs:
         run: npm install
 
       # Run build if applicable
-      - name: Build project
+      - name: Build
         run: npm run build
 
       # Login to Azure
