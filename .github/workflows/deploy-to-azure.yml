@@ -1,0 +1,49 @@
+name: Deploy to Azure Web App
+
+on:
+  push:
+    branches: [ main ]  # Change this to the desired branch
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout code from the repo
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # Use the correct version of Node.js
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run build if applicable
+      - name: Build project
+        run: npm run build
+
+      # Login to Azure
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Deploy to Azure Web App
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'christmas-tree-app'   # Replace with your Azure Web App name
+          slot-name: 'production'          # Optional: Deployment slot
+          package: .                       # Root directory of your project
+
+      # Logout from Azure (optional for cleanup)
+      - name: Logout from Azure
+        run: az logout
