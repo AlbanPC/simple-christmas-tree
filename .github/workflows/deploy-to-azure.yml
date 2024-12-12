@@ -40,7 +40,7 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'christmas-tree-app'   # Replace with your Azure Web App name
+          app-name: 'simple-christmas-tree-app'   # Replace with your Azure Web App name
           slot-name: 'production'          # Optional: Deployment slot
           package: .                       # Root directory of your project
 
