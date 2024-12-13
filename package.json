@@ -17,19 +17,5 @@
   },
   "engines": {
     "node": ">=18.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/AlbanPC/simple-christmas-tree.git"
-  },
-  "keywords": [
-    "christmas",
-    "tree",
-    "web-app",
-    "nodejs",
-    "express",
-    "azure-deploy"
-  ],
-  "author": "AlbanPC",
-  "license": "MIT"
-}
+  }
+} 
